@@ -1,6 +1,7 @@
 'use strict'
 
-const assign = require( 'lodash.assign' )
+const assign = require( 'lodash.assign' );
+const LIST_ITEM_LIMIT = 75;
 
 /*
 
@@ -39,7 +40,7 @@ function apiUrls( options ) {
         },
 
         doorbots() {
-            return assign( `${this}/clients_api/doorbots`, {
+            return assign( `${this}/clients_api/doorbots?limit=${LIST_ITEM_LIMIT}`, {
 
                 device( device ) {
                     return assign( `${this}/${device.id}`, {
@@ -60,13 +61,13 @@ function apiUrls( options ) {
                 },
 
                 history() {
-                    return `${this}/history`
+                    return `${this}/history?limit=${LIST_ITEM_LIMIT}`
                 }
             })
         },
 
         dings() {
-            return assign( `${this}/clients_api/dings`, {
+            return assign( `${this}/clients_api/dings?limit=${LIST_ITEM_LIMIT}`, {
 
                 ding( ding ) {
                     return assign( `${this}/${ding.id}`, {
@@ -84,7 +85,7 @@ function apiUrls( options ) {
         },
 
         chimes() {
-            return assign( `${this}/clients_api/chimes`, {
+            return assign( `${this}/clients_api/chimes?limit=${LIST_ITEM_LIMIT}`, {
 
                 device( device ) {
                     return assign( `${this}/${device.id}`, {
